@@ -41,7 +41,7 @@ flutter:
 * Create arb file of all Language
 ```
 app_en.arb
-app_fa.arb
+app_es.arb
 
 ```
 
