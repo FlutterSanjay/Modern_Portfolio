@@ -1,3 +1,7 @@
 {
-  "home": "Inicio"
+  "home": "Inicio",
+  "skill": "Habilidades y Experiencia",
+  "project": "Proyecto",
+  "certificate": "Educación y Certificaciones",
+  "about": "Sobre Mí"
 }

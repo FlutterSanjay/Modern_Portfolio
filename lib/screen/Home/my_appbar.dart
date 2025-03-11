@@ -37,10 +37,10 @@ class AppMenus extends StatelessWidget {
     return Row(
       children: [
         Text(AppLocalizations.of(context)!.home),
-        Text(' Skills and Expertise'),
-        Text('Project'),
-        Text('Education and Certifications'),
-        Text('About Me'),
+        Text(AppLocalizations.of(context)!.skill),
+        Text(AppLocalizations.of(context)!.project),
+        Text(AppLocalizations.of(context)!.certificate),
+        Text(AppLocalizations.of(context)!.about),
       ],
     );
   }

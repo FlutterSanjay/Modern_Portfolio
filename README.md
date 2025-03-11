@@ -56,3 +56,9 @@ output-localization-file: app_localizations.dart
 ```
 AppLocalizations.of(context)!.home # it's must be changeable eg home
 ```
+## OR
+
+```
+AppLocalizations get texts =>
+      AppLocalizations.of(this) ?? lookupAppLocalizations(const Locale('en'));
+```
