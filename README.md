@@ -3,7 +3,7 @@
 ``` 
 flutter pub get
 ```
-** Add Difference Language in App
+* Add Difference Language in App
 ```
 flutter pub add flutter_localizations --sdk=flutter
 ```
@@ -37,15 +37,15 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 flutter:
   generate: true # Add this line
 ```
-*Create l10n folder inside lib
-**Create arb file of all Language
+* Create l10n folder inside lib
+* Create arb file of all Language
 ```
 app_en.arb
 app_fa.arb
 
 ```
 
-*Add a new yaml file to the root directory of the Flutter project. Name this file l10n.yaml
+* Add a new yaml file to the root directory of the Flutter project. Name this file l10n.yaml
 
 ```
 arb-dir: lib/l10n
