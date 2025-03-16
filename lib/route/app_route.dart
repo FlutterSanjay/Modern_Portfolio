@@ -1,7 +1,7 @@
 class Routes {
   static const String home = '/';
-  static const String skilandexperience = '/skill';
+  static const String skills = '/skills';
   static const String project = '/project';
-  static const String education = '/education';
-  static const String aboutme = '/aboutme';
+  static const String certificate = '/certificate';
+  static const String aboutMe = '/aboutMe';
 }

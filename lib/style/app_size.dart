@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class Insets {
   static const maxWidth = 1280.0;
+  static double get xs => 4;
+  static double get med => 12;
+  
 }
 
 abstract class AppInsets {

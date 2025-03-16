@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:web_portfolio/common/app_text_style.dart';
 import 'package:web_portfolio/common/extension.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:web_portfolio/constant/app_menu_list.dart';
 import 'package:web_portfolio/style/app_size.dart';
 import 'package:web_portfolio/widget/appBar/app_bar_drawer_icon.dart';
+import 'package:web_portfolio/widget/language_switch.dart';
 
 class MyAppbar extends StatelessWidget {
   const MyAppbar({super.key});
@@ -23,7 +25,7 @@ class MyAppbar extends StatelessWidget {
             Spacer(),
             if (context.isDesktop) LargeMenu(),
             Spacer(),
-            LanguageToggle(),
+            LanguageSwitch(),
             ThemeToggle(),
             if (!context.isDesktop) AppBarDrawerIcon(),
           ],
@@ -48,33 +50,47 @@ class LargeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        Text(context.texts.home),
-        Text(context.texts.skill),
-        Text(context.texts.project),
-        Text(context.texts.certificate),
-        Text(context.texts.about),
-      ],
+      children:
+          AppMenuList.getItems(context)
+              .map(
+                (e) => LargeAppBarMenuItem(
+                  title: e.title,
+                  isSelected: true,
+                  onTap: () {},
+                ),
+              )
+              .toList(),
     );
   }
 }
 
-class LanguageToggle extends StatelessWidget {
-  const LanguageToggle({super.key});
+class LargeAppBarMenuItem extends StatelessWidget {
+  const LargeAppBarMenuItem({
+    super.key,
+    required this.title,
+    required this.onTap,
+    required this.isSelected,
+  });
+  final String title;
+  final bool isSelected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(
-      itemBuilder: (context) {
-        return [
-          PopupMenuItem(child: Text('English')),
-          PopupMenuItem(child: Text('Hindi')),
-          PopupMenuItem(child: Text('Spanish')),
-        ];
-      },
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: Insets.med,
+          vertical: Insets.xs,
+        ),
+        child: Text(title, style: SmallTextStyles().bodyLgMedium),
+      ),
     );
   }
 }
+
+
 
 class ThemeToggle extends StatelessWidget {
   const ThemeToggle({super.key});
