@@ -28,7 +28,7 @@ class MainApp extends StatelessWidget {
         Locale('en'), // English
         Locale('es'), // Spanish
       ],
-      
+      locale: Locale('en'),
       home: const HomePage(),
     );
   }

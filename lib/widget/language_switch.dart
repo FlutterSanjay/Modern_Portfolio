@@ -19,7 +19,7 @@ class LanguageSwitch extends StatelessWidget {
               language: 'English',
             ),
           ),
-          PopupMenuItem(child: Text('Hindi')),
+          // Add hindi Language Later
           PopupMenuItem(
             child: PopupLanguageSwitchItem(
               icon: AppIcon.ir,
@@ -32,7 +32,11 @@ class LanguageSwitch extends StatelessWidget {
         children: [
           Icon(Icons.language, color: context.colorScheme.onSurface),
           Gap(4),
-          // SEOText(locale.value == 'en' ? 'En' : 'Es'),
+          SEOText(
+            Localizations.localeOf(context).languageCode == 'en'
+                ? 'En'
+                : 'Es', // fetch the app language used
+          ),
         ],
       ),
     );
