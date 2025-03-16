@@ -5,8 +5,8 @@ class AppThemes {
   static ThemeData get dark => ThemeData(
     colorScheme: ColorScheme.dark(
       primary: AppColors.primaryColor,
-      background: AppColors.darkBackgroundColor,
-      onBackground: AppColors.gray[100],
+      surface: AppColors.darkBackgroundColor,
+      onSurface: AppColors.gray[100]!,
     ),
     useMaterial3: true,
     scaffoldBackgroundColor: AppColors.darkBackgroundColor,

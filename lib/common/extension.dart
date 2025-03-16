@@ -10,6 +10,8 @@ extension StyledContext on BuildContext {
   double get width => mq.size.width;
   double get height => mq.size.height;
 
+  ThemeData get theme => Theme.of(this);
+
   FormFactorType get formFactor {
     if (width < 600) {
       return FormFactorType.mobile;
@@ -34,7 +36,7 @@ extension StyledContext on BuildContext {
     }
   }
 
-// for padding Size
+  // for padding Size
   AppInsets get insets {
     switch (formFactor) {
       case FormFactorType.mobile:
