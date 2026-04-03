@@ -1,39 +1,46 @@
-name: Flutter Code Quality
+name: Flutter Auto Upgrade
 
 on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+  workflow_dispatch:   # manual trigger
+  schedule:
+    - cron: '0 0 * * 1'   # every Monday
 
 jobs:
-  analyze:
+  upgrade:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Setup Flutter (latest)
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'
+          channel: stable   # always latest stable
 
-      - name: Get dependencies
-        run: flutter pub get
+      # 3. Check version
+      - name: Flutter version
+        run: flutter --version
 
-      - name: Analyze code
+      # 4. Upgrade dependencies
+      - name: Upgrade dependencies
+        run: flutter pub upgrade --major-versions
+
+      # 5. Analyze code
+      - name: Analyze
         run: flutter analyze
 
-      - name: Check formatting
-        run: dart format --set-exit-if-changed .
-
+      # 6. Run tests
       - name: Run tests
         run: flutter test
 
-      # 🔥 Install Dart Code Metrics
-      - name: Install metrics
-        run: dart pub global activate dart_code_metrics
-
-      - name: Run metrics
-        run: dart run dart_code_metrics:metrics analyze lib
+      # 7. Commit changes (IMPORTANT)
+      - name: Commit changes
+        run: |
+          git config --global user.name "FlutterSanjay" 
+          git config --global user.email "sanjayshaw80138@gmail.com" 
+          git add .
+          git commit -m "Auto upgrade Flutter SDK & dependencies" || echo "No changes"
+          git push
